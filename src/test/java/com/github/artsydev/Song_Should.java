@@ -71,4 +71,21 @@ public class Song_Should {
         assertThat(song, is(emptyString()));
     }
 
+    @Test public void
+    return_the_lyrics_for_the_cast() {
+        List<CastMember> flyCast = new ArrayList<>();
+        flyCast.add(new CastMember("fly",
+                                   "I don't know why she swallowed a fly - perhaps she'll die!"));
+        flyCast.add((new CastMember("spider",
+                                    "That wriggled and wiggled and tickled inside her.")));
+        flyCast.add((new CastMember("bird", "How absurd to swallow a bird.")));
+        flyCast.add((new CastMember("cat", "Fancy that to swallow a cat!")));
+        flyCast.add((new CastMember("dog", "What a hog, to swallow a dog!")));
+        flyCast.add((new CastMember("cow", "I don't know how she swallowed a cow!")));
+
+        String lyrics = Song.writeSongLyrics(flyCast);
+
+        assertThat(lyrics, is(flyLyrics));
+    }
+
 }
