@@ -1,15 +1,22 @@
 package com.github.artsydev;
 
 
+import java.util.List;
+
+
 public class Song {
 
     public static void main(String[] args) {
-        String songLyrics = writeSongLyrics();
+        String songLyrics = writeSongLyrics(null);
 
         System.out.println(songLyrics);
     }
 
-    protected static String writeSongLyrics() {
+    protected static String writeSongLyrics(List<CastMember> cast) {
+        if (cast == null || cast.size() == 0) {
+            return "";
+        }
+
         return "There was an old lady who swallowed a fly.\n" +
                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
                "\n" +
