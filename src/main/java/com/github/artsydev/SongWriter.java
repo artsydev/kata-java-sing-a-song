@@ -29,18 +29,18 @@ public class SongWriter {
     }
 
     private static String firstVerse(String animal) {
-        return oldLadySwallowed(animal, PERIOD) + swallowedLyric(animal);
+        return swallowedLyric(animal, PERIOD) + dontKnowWhyLyric(animal);
     }
 
-    private static String lastVerse(Animal cast) {
-        return oldLadySwallowed(cast.getName(), ELLIPSES) + cast.getBehavior();
+    private static String lastVerse(Animal animal) {
+        return swallowedLyric(animal.getName(), ELLIPSES) + animal.getBehavior();
     }
 
-    private static String oldLadySwallowed(String animal, String punctuation) {
+    private static String swallowedLyric(String animal, String punctuation) {
         return String.format("There was an old lady who swallowed a %s%s\n", animal, punctuation);
     }
 
-    private static String swallowedLyric(String animal) {
+    private static String dontKnowWhyLyric(String animal) {
         return String.format("I don't know why she swallowed a %s - perhaps she'll die!\n", animal);
     }
 
