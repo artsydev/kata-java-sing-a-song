@@ -66,7 +66,7 @@ public class Song_Should {
 
     @Test public void
     return_empty_lyrics_if_the_cast_is_null() {
-        String songLyrics = Song.writeSongLyrics(null);
+        String songLyrics = SongWriter.lyricsFor(null);
 
         assertThat(songLyrics, is(emptyString()));
     }
@@ -75,7 +75,7 @@ public class Song_Should {
     return_empty_lyrics_if_the_cast_is_empty() {
         List<CastMember> cast = new ArrayList<>();
 
-        String song = Song.writeSongLyrics(cast);
+        String song = SongWriter.lyricsFor(cast);
 
         assertThat(song, is(emptyString()));
     }
@@ -90,7 +90,7 @@ public class Song_Should {
         flyCast.add(DOG);
         flyCast.add(COW);
 
-        String lyrics = Song.writeSongLyrics(flyCast);
+        String lyrics = SongWriter.lyricsFor(flyCast);
 
         assertThat(lyrics, is(FLY_CAST_LYRICS));
     }
