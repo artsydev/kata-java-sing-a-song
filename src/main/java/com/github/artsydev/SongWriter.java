@@ -10,17 +10,17 @@ public class SongWriter {
     private static final String ELLIPSES = "...";
     private static final String PERIOD = ".";
 
-    public static String lyricsFor(List<Animal> cast) {
-        if (noCastMembers(cast)) {
+    public static String lyricsFor(List<Animal> animalList) {
+        if (noAnimals(animalList)) {
             return NO_LYRICS;
         }
 
-        if (cast.size() == 1) {
-            return swallowedLyric(cast.get(0), PERIOD);
-        } else if (cast.size() == 2) {
-            return swallowedLyric(cast.get(0), PERIOD) +
+        if (animalList.size() == 1) {
+            return swallowedLyric(animalList.get(0), PERIOD);
+        } else if (animalList.size() == 2) {
+            return swallowedLyric(animalList.get(0), PERIOD) +
                    verseSeparator() +
-                   swallowedLyric(cast.get(1), ELLIPSES);
+                   swallowedLyric(animalList.get(1), ELLIPSES);
         }
 
         return NO_LYRICS;
@@ -38,8 +38,8 @@ public class SongWriter {
     }
 
 
-    private static boolean noCastMembers(List<Animal> cast) {
-        return cast == null || cast.size() == 0;
+    private static boolean noAnimals(List<Animal> animals) {
+        return animals == null || animals.size() == 0;
     }
 
 }
