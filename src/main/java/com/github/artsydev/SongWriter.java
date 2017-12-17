@@ -25,7 +25,7 @@ public class SongWriter {
     }
 
     private static String firstVerse(String animal) {
-        return oldLadySwallowed(animal, PERIOD) + dontKnowWhySheSwallowed(animal);
+        return oldLadySwallowed(animal, PERIOD) + swallowedLyric(animal);
     }
 
     private static String lastVerse(Animal cast) {
@@ -36,7 +36,7 @@ public class SongWriter {
         return String.format("There was an old lady who swallowed a %s%s\n", animal, punctuation);
     }
 
-    private static String dontKnowWhySheSwallowed(String animal) {
+    private static String swallowedLyric(String animal) {
         return String.format("I don't know why she swallowed a %s - perhaps she'll die!\n", animal);
     }
 
