@@ -16,6 +16,11 @@ public class Song_Should {
     private static final String SINGLE_CAST_MEMBER_LYRICS =
             "There was an old lady who swallowed a fly.\n" +
             "I don't know why she swallowed a fly - perhaps she'll die!\n";
+    private static final String TWO_CAST_MEMBERS_LYRICS =
+            "There was an old lady who swallowed a fly.\n" +
+            "I don't know why she swallowed a fly - perhaps she'll die!\n" +
+            "There was an old lady who swallowed a horse...\n" +
+            "...She's dead, of course!";
     private static final String WHOLE_CAST_LYRICS =
             "There was an old lady who swallowed a fly.\n" +
             "I don't know why she swallowed a fly - perhaps she'll die!\n" +
@@ -66,6 +71,8 @@ public class Song_Should {
     private static final CastMember DOG = new CastMember("dog", "What a hog, to swallow a dog!");
     private static final CastMember COW = new CastMember("cow",
                                                          "I don't know how she swallowed a cow!");
+    private static final CastMember HORSE = new CastMember("horse",
+                                                         "...She's dead, of course!");
 
     @Test public void
     return_empty_lyrics_if_the_cast_is_null() {
@@ -91,6 +98,17 @@ public class Song_Should {
         String lyrics = SongWriter.lyricsFor(flyCast);
 
         assertThat(lyrics, is(SINGLE_CAST_MEMBER_LYRICS));
+    }
+
+    @Test public void
+    return_the_lyrics_for_two_cast_members() {
+        List<CastMember> twoMemberCast = new ArrayList<>();
+        twoMemberCast.add(FLY);
+        twoMemberCast.add(HORSE);
+
+        String lyrics = SongWriter.lyricsFor(twoMemberCast);
+
+        assertThat(lyrics, is(TWO_CAST_MEMBERS_LYRICS));
     }
 
 }
