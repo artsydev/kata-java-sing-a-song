@@ -33,11 +33,11 @@ public class SongWriter {
     }
 
     private static String oldLadySwallowed(String animal, String punctuation) {
-        return "There was an old lady who swallowed a " + animal + punctuation + "\n";
+        return String.format("There was an old lady who swallowed a %s%s\n", animal, punctuation);
     }
 
     private static String dontKnowWhySheSwallowed(String animal) {
-        return "I don't know why she swallowed a " + animal + " - perhaps she'll die!\n";
+        return String.format("I don't know why she swallowed a %s - perhaps she'll die!\n", animal);
     }
 
     private static boolean noCastMembers(List<Animal> cast) {
