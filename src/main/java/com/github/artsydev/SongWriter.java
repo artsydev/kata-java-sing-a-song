@@ -18,10 +18,14 @@ public class SongWriter {
         if (cast.size() == 1) {
             return firstVerse(cast.get(0).getName());
         } else if (cast.size() == 2) {
-            return firstVerse(cast.get(0).getName()) + lastVerse(cast.get(1));
+            return firstVerse(cast.get(0).getName()) + verseSeparator() + lastVerse(cast.get(1));
         }
 
         return NO_LYRICS;
+    }
+
+    private static String verseSeparator() {
+        return "\n";
     }
 
     private static String firstVerse(String animal) {
