@@ -15,7 +15,7 @@ public class Song_Should {
 
     private static final String SINGLE_CAST_MEMBER_LYRICS =
             "There was an old lady who swallowed a fly.\n" +
-            "I don't know why she swallowed a fly - perhaps she'll die!\n";
+            "I don't know why she swallowed a fly - perhaps she'll die!";
     private static final String TWO_CAST_MEMBERS_LYRICS =
             "There was an old lady who swallowed a fly.\n" +
             "I don't know why she swallowed a fly - perhaps she'll die!\n" +
@@ -110,6 +110,23 @@ public class Song_Should {
         String lyrics = SongWriter.lyricsFor(twoMemberCast);
 
         assertThat(lyrics, is(TWO_CAST_MEMBERS_LYRICS));
+    }
+
+    @Test public void
+    return_the_lyrics_for_the_whole_cast() {
+        List<Animal> wholeCast = new ArrayList<>();
+        wholeCast.add(FLY);
+        wholeCast.add(SPIDER);
+        wholeCast.add(BIRD);
+        wholeCast.add(CAT);
+        wholeCast.add(DOG);
+        wholeCast.add(COW);
+        wholeCast.add(HORSE);
+
+        String lyrics = SongWriter.lyricsFor(wholeCast);
+
+        assertThat(lyrics, is(WHOLE_CAST_LYRICS));
+        assertThat(lyrics, is(WHOLE_CAST_LYRICS));
     }
 
 }
