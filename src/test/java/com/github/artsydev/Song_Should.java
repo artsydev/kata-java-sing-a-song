@@ -62,17 +62,17 @@ public class Song_Should {
             "\n" +
             "There was an old lady who swallowed a horse...\n" +
             "...She's dead, of course!";
-    private static final CastMember FLY = new CastMember("fly",
-                                                         "I don't know why she swallowed a fly - perhaps she'll die!");
-    private static final CastMember SPIDER = new CastMember("spider",
-                                                            "That wriggled and wiggled and tickled inside her.");
-    private static final CastMember BIRD = new CastMember("bird", "How absurd to swallow a bird.");
-    private static final CastMember CAT = new CastMember("cat", "Fancy that to swallow a cat!");
-    private static final CastMember DOG = new CastMember("dog", "What a hog, to swallow a dog!");
-    private static final CastMember COW = new CastMember("cow",
-                                                         "I don't know how she swallowed a cow!");
-    private static final CastMember HORSE = new CastMember("horse",
-                                                         "...She's dead, of course!");
+    private static final Animal FLY = new Animal("fly",
+                                                 "I don't know why she swallowed a fly - perhaps she'll die!");
+    private static final Animal SPIDER = new Animal("spider",
+                                                    "That wriggled and wiggled and tickled inside her.");
+    private static final Animal BIRD = new Animal("bird", "How absurd to swallow a bird.");
+    private static final Animal CAT = new Animal("cat", "Fancy that to swallow a cat!");
+    private static final Animal DOG = new Animal("dog", "What a hog, to swallow a dog!");
+    private static final Animal COW = new Animal("cow",
+                                                 "I don't know how she swallowed a cow!");
+    private static final Animal HORSE = new Animal("horse",
+                                                   "...She's dead, of course!");
 
     @Test public void
     return_empty_lyrics_if_the_cast_is_null() {
@@ -83,7 +83,7 @@ public class Song_Should {
 
     @Test public void
     return_empty_lyrics_if_the_cast_is_empty() {
-        List<CastMember> cast = new ArrayList<>();
+        List<Animal> cast = new ArrayList<>();
 
         String song = SongWriter.lyricsFor(cast);
 
@@ -92,7 +92,7 @@ public class Song_Should {
 
     @Test public void
     return_the_lyrics_for_a_single_cast_member() {
-        List<CastMember> flyCast = new ArrayList<>();
+        List<Animal> flyCast = new ArrayList<>();
         flyCast.add(FLY);
 
         String lyrics = SongWriter.lyricsFor(flyCast);
@@ -102,7 +102,7 @@ public class Song_Should {
 
     @Test public void
     return_the_lyrics_for_two_cast_members() {
-        List<CastMember> twoMemberCast = new ArrayList<>();
+        List<Animal> twoMemberCast = new ArrayList<>();
         twoMemberCast.add(FLY);
         twoMemberCast.add(HORSE);
 

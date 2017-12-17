@@ -10,15 +10,15 @@ public class SongWriter {
     private static final String ELIPSES = "...";
     private static final String PERIOD = ".";
 
-    public static String lyricsFor(List<CastMember> cast) {
+    public static String lyricsFor(List<Animal> cast) {
         if (noCastMembers(cast)) {
             return NO_LYRICS;
         }
 
         if (cast.size() == 1) {
-            return firstVerse(cast.get(0).getAnimal());
+            return firstVerse(cast.get(0).getName());
         } else if (cast.size() == 2) {
-            return firstVerse(cast.get(0).getAnimal()) + lastVerse(cast.get(1));
+            return firstVerse(cast.get(0).getName()) + lastVerse(cast.get(1));
         }
 
         return NO_LYRICS;
@@ -28,8 +28,8 @@ public class SongWriter {
         return oldLadySwallowed(animal, PERIOD) + dontKnowWhySheSwallowed(animal);
     }
 
-    private static String lastVerse(CastMember cast) {
-        return oldLadySwallowed(cast.getAnimal(), ELIPSES) + cast.getRhyme();
+    private static String lastVerse(Animal cast) {
+        return oldLadySwallowed(cast.getName(), ELIPSES) + cast.getBehavior();
     }
 
     private static String oldLadySwallowed(String animal, String punctuation) {
@@ -40,7 +40,7 @@ public class SongWriter {
         return "I don't know why she swallowed a " + animal + " - perhaps she'll die!\n";
     }
 
-    private static boolean noCastMembers(List<CastMember> cast) {
+    private static boolean noCastMembers(List<Animal> cast) {
         return cast == null || cast.size() == 0;
     }
 
