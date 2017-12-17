@@ -10,4 +10,12 @@ public class CastMember {
         this.animal = animal;
         this.rhyme = rhyme;
     }
+
+    public String getAnimal() {
+        return animal;
+    }
+
+    public String getRhyme() {
+        return rhyme;
+    }
 }

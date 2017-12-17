@@ -13,7 +13,10 @@ import static org.hamcrest.core.Is.is;
 
 public class Song_Should {
 
-    private static final String FLY_CAST_LYRICS =
+    private static final String SINGLE_CAST_MEMBER_LYRICS =
+            "There was an old lady who swallowed a fly.\n" +
+            "I don't know why she swallowed a fly - perhaps she'll die!\n";
+    private static final String WHOLE_CAST_LYRICS =
             "There was an old lady who swallowed a fly.\n" +
             "I don't know why she swallowed a fly - perhaps she'll die!\n" +
             "\n" +
@@ -81,18 +84,13 @@ public class Song_Should {
     }
 
     @Test public void
-    return_the_lyrics_for_the_cast() {
+    return_the_lyrics_for_a_single_cast_member() {
         List<CastMember> flyCast = new ArrayList<>();
         flyCast.add(FLY);
-        flyCast.add(SPIDER);
-        flyCast.add(BIRD);
-        flyCast.add(CAT);
-        flyCast.add(DOG);
-        flyCast.add(COW);
 
         String lyrics = SongWriter.lyricsFor(flyCast);
 
-        assertThat(lyrics, is(FLY_CAST_LYRICS));
+        assertThat(lyrics, is(SINGLE_CAST_MEMBER_LYRICS));
     }
 
 }
