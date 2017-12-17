@@ -13,7 +13,7 @@ import static org.hamcrest.core.Is.is;
 
 public class Song_Should {
 
-    private static final String flyLyrics =
+    private static final String FLY_CAST_LYRICS =
             "There was an old lady who swallowed a fly.\n" +
             "I don't know why she swallowed a fly - perhaps she'll die!\n" +
             "\n" +
@@ -54,6 +54,15 @@ public class Song_Should {
             "\n" +
             "There was an old lady who swallowed a horse...\n" +
             "...She's dead, of course!";
+    private static final CastMember FLY = new CastMember("fly",
+                                                         "I don't know why she swallowed a fly - perhaps she'll die!");
+    private static final CastMember SPIDER = new CastMember("spider",
+                                                            "That wriggled and wiggled and tickled inside her.");
+    private static final CastMember BIRD = new CastMember("bird", "How absurd to swallow a bird.");
+    private static final CastMember CAT = new CastMember("cat", "Fancy that to swallow a cat!");
+    private static final CastMember DOG = new CastMember("dog", "What a hog, to swallow a dog!");
+    private static final CastMember COW = new CastMember("cow",
+                                                         "I don't know how she swallowed a cow!");
 
     @Test public void
     return_empty_lyrics_if_the_cast_is_null() {
@@ -74,18 +83,16 @@ public class Song_Should {
     @Test public void
     return_the_lyrics_for_the_cast() {
         List<CastMember> flyCast = new ArrayList<>();
-        flyCast.add(new CastMember("fly",
-                                   "I don't know why she swallowed a fly - perhaps she'll die!"));
-        flyCast.add((new CastMember("spider",
-                                    "That wriggled and wiggled and tickled inside her.")));
-        flyCast.add((new CastMember("bird", "How absurd to swallow a bird.")));
-        flyCast.add((new CastMember("cat", "Fancy that to swallow a cat!")));
-        flyCast.add((new CastMember("dog", "What a hog, to swallow a dog!")));
-        flyCast.add((new CastMember("cow", "I don't know how she swallowed a cow!")));
+        flyCast.add(FLY);
+        flyCast.add(SPIDER);
+        flyCast.add(BIRD);
+        flyCast.add(CAT);
+        flyCast.add(DOG);
+        flyCast.add(COW);
 
         String lyrics = Song.writeSongLyrics(flyCast);
 
-        assertThat(lyrics, is(flyLyrics));
+        assertThat(lyrics, is(FLY_CAST_LYRICS));
     }
 
 }
