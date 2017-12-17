@@ -7,7 +7,7 @@ import java.util.List;
 public class SongWriter {
 
     private static final String NO_LYRICS = "";
-    private static final String ELIPSES = "...";
+    private static final String ELLIPSES = "...";
     private static final String PERIOD = ".";
 
     public static String lyricsFor(List<Animal> cast) {
@@ -29,7 +29,7 @@ public class SongWriter {
     }
 
     private static String lastVerse(Animal cast) {
-        return oldLadySwallowed(cast.getName(), ELIPSES) + cast.getBehavior();
+        return oldLadySwallowed(cast.getName(), ELLIPSES) + cast.getBehavior();
     }
 
     private static String oldLadySwallowed(String animal, String punctuation) {
