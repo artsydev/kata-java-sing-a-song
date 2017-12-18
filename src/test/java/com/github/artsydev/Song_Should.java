@@ -61,7 +61,7 @@ public class Song_Should {
             "There was an old lady who swallowed a horse...\n" +
             "...She's dead, of course!";
     private static final String ALPHABET_ANIMAL_LYRICS =
-            "There was an old lady who swallowed a A.\n"
+            "There was an old lady who swallowed an A.\n"
             + "A behavior!\n"
             + "\n"
             + "There was an old lady who swallowed a B;\n"
@@ -82,7 +82,7 @@ public class Song_Should {
             + "She swallowed the B to catch the A;\n"
             + "A behavior!\n"
             + "\n"
-            + "There was an old lady who swallowed a E...\n"
+            + "There was an old lady who swallowed an E...\n"
             + "E behaving badly.";
 
     private static final Animal FLY = new Animal("fly",

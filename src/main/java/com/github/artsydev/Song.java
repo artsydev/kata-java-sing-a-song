@@ -29,7 +29,8 @@ public class Song {
     }
 
     private static void shortVerse(Animal animal, String punctuation, StringBuilder lyrics) {
-        lyrics.append(String.format("There was an old lady who swallowed a %s%s\n%s",
+        lyrics.append(String.format("There was an old lady who swallowed %s %s%s\n%s",
+                                    indefiniteArticle(animal.getName()),
                                     animal.getName(),
                                     punctuation,
                                     animal.getBehavior()));
@@ -70,8 +71,16 @@ public class Song {
         }
     }
 
+    private static String indefiniteArticle(String animalName) {
+        return startsWithVowel(animalName) ? "an" : "a";
+    }
+
     private static boolean dontHaveExplanatoryVerses(int lastAnimalIndex) {
         return lastAnimalIndex <= 1;
+    }
+
+    private static boolean startsWithVowel(String name) {
+        return "AEIOUaeiou".indexOf(name.charAt(0)) != -1;
     }
 
     private static boolean noAnimals(Animal[] animals) {
