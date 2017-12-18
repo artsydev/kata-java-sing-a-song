@@ -47,12 +47,12 @@ public class Song {
     }
 
     private static void explanatoryLyrics(Animal[] animals,
-                                          int currentAnimal,
+                                          int lastSwallowed,
                                           StringBuilder lyrics) {
-        shortVerse(animals[currentAnimal], SEMICOLON, lyrics);
+        shortVerse(animals[lastSwallowed], SEMICOLON, lyrics);
 
-        for (int i = currentAnimal; i > 1; i--) {
-            lyrics.append(swallowLyrics(animals[i], animals[i - 1], COMMA));
+        for (int curAnimal = lastSwallowed; curAnimal > 1; curAnimal--) {
+            lyrics.append(swallowLyrics(animals[curAnimal], animals[curAnimal - 1], COMMA));
         }
         lyrics.append(swallowLyrics(animals[1], animals[0], SEMICOLON));
         lyrics.append(String.format("\n%s", animals[0].getBehavior()));
