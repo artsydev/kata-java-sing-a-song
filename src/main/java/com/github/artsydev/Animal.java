@@ -18,4 +18,8 @@ public class Animal {
     public String getBehavior() {
         return behavior;
     }
+
+    @Override public String toString() {
+        return getName();
+    }
 }

@@ -3,9 +3,6 @@ package com.github.artsydev;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.core.Is.is;
@@ -13,16 +10,16 @@ import static org.hamcrest.core.Is.is;
 
 public class Song_Should {
 
-    private static final String SINGLE_CAST_MEMBER_LYRICS =
+    private static final String SINGLE_ANIMAL_LYRICS =
             "There was an old lady who swallowed a fly.\n" +
             "I don't know why she swallowed a fly - perhaps she'll die!";
-    private static final String TWO_CAST_MEMBERS_LYRICS =
+    private static final String TWO_ANIMALS_LYRICS =
             "There was an old lady who swallowed a fly.\n" +
             "I don't know why she swallowed a fly - perhaps she'll die!\n" +
             "\n" +
             "There was an old lady who swallowed a horse...\n" +
             "...She's dead, of course!";
-    private static final String WHOLE_CAST_LYRICS =
+    private static final String SEVEN_ANIMALS_LYRICS =
             "There was an old lady who swallowed a fly.\n" +
             "I don't know why she swallowed a fly - perhaps she'll die!\n" +
             "\n" +
@@ -63,6 +60,31 @@ public class Song_Should {
             "\n" +
             "There was an old lady who swallowed a horse...\n" +
             "...She's dead, of course!";
+    private static final String ALPHABET_ANIMAL_LYRICS =
+            "There was an old lady who swallowed a A.\n"
+            + "A behavior!\n"
+            + "\n"
+            + "There was an old lady who swallowed a B;\n"
+            + "B behavior.\n"
+            + "She swallowed the B to catch the A;\n"
+            + "A behavior!\n"
+            + "\n"
+            + "There was an old lady who swallowed a C;\n"
+            + "C behavior?\n"
+            + "She swallowed the C to catch the B,\n"
+            + "She swallowed the B to catch the A;\n"
+            + "A behavior!\n"
+            + "\n"
+            + "There was an old lady who swallowed a D;\n"
+            + "D behavior!!!\n"
+            + "She swallowed the D to catch the C,\n"
+            + "She swallowed the C to catch the B,\n"
+            + "She swallowed the B to catch the A;\n"
+            + "A behavior!\n"
+            + "\n"
+            + "There was an old lady who swallowed a E...\n"
+            + "E behaving badly.";
+
     private static final Animal FLY = new Animal("fly",
                                                  "I don't know why she swallowed a fly - perhaps she'll die!");
     private static final Animal SPIDER = new Animal("spider",
@@ -74,59 +96,54 @@ public class Song_Should {
                                                  "I don't know how she swallowed a cow!");
     private static final Animal HORSE = new Animal("horse",
                                                    "...She's dead, of course!");
+    private static final Animal A = new Animal("A", "A behavior!");
+    private static final Animal B = new Animal("B", "B behavior.");
+    private static final Animal C = new Animal("C", "C behavior?");
+    private static final Animal D = new Animal("D", "D behavior!!!");
+    private static final Animal E = new Animal("E", "E behaving badly.");
 
     @Test public void
-    return_empty_lyrics_if_the_cast_is_null() {
-        String songLyrics = SongWriter.lyricsFor(null);
+    return_empty_lyrics_if_animal_list_is_null() {
+        String songLyrics = Song.lyricsFor(null);
 
         assertThat(songLyrics, is(emptyString()));
     }
 
     @Test public void
-    return_empty_lyrics_if_the_cast_is_empty() {
-        List<Animal> cast = new ArrayList<>();
+    return_empty_lyrics_if_animal_list_is_empty() {
+        Animal[] animals = {};
 
-        String song = SongWriter.lyricsFor(cast);
+        String song = Song.lyricsFor(animals);
 
         assertThat(song, is(emptyString()));
     }
 
     @Test public void
-    return_the_lyrics_for_a_single_cast_member() {
-        List<Animal> flyCast = new ArrayList<>();
-        flyCast.add(FLY);
+    return_one_short_verse_for_a_single_animal() {
+        String lyrics = Song.lyricsFor(FLY);
 
-        String lyrics = SongWriter.lyricsFor(flyCast);
-
-        assertThat(lyrics, is(SINGLE_CAST_MEMBER_LYRICS));
+        assertThat(lyrics, is(SINGLE_ANIMAL_LYRICS));
     }
 
     @Test public void
-    return_the_lyrics_for_two_cast_members() {
-        List<Animal> twoMemberCast = new ArrayList<>();
-        twoMemberCast.add(FLY);
-        twoMemberCast.add(HORSE);
+    return_two_short_verses_for_two_animals() {
+        String lyrics = Song.lyricsFor(FLY, HORSE);
 
-        String lyrics = SongWriter.lyricsFor(twoMemberCast);
-
-        assertThat(lyrics, is(TWO_CAST_MEMBERS_LYRICS));
+        assertThat(lyrics, is(TWO_ANIMALS_LYRICS));
     }
 
     @Test public void
-    return_the_lyrics_for_the_whole_cast() {
-        List<Animal> wholeCast = new ArrayList<>();
-        wholeCast.add(FLY);
-        wholeCast.add(SPIDER);
-        wholeCast.add(BIRD);
-        wholeCast.add(CAT);
-        wholeCast.add(DOG);
-        wholeCast.add(COW);
-        wholeCast.add(HORSE);
+    return_short_verses_for_first_and_last_with_explanatory_verses_for_other_animals() {
+        String lyrics = Song.lyricsFor(FLY, SPIDER, BIRD, CAT, DOG, COW, HORSE);
 
-        String lyrics = SongWriter.lyricsFor(wholeCast);
+        assertThat(lyrics, is(SEVEN_ANIMALS_LYRICS));
+    }
 
-        assertThat(lyrics, is(WHOLE_CAST_LYRICS));
-        assertThat(lyrics, is(WHOLE_CAST_LYRICS));
+    @Test public void
+    return_short_verses_for_first_and_last_with_explanatory_verses_for_letter_animals() {
+        String lyrics = Song.lyricsFor(A, B, C, D, E);
+
+        assertThat(lyrics, is(ALPHABET_ANIMAL_LYRICS));
     }
 
 }
