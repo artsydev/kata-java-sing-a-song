@@ -1,5 +1,12 @@
 # Implementation of the Sing a Song Kata
 
+This kata is to practice TDD techniques. I am not completely happy with my loops in the explanatoryVerses() methods, but I will leave it as is for now. As an exercise for later, perhaps they could be reworked in a more functional style.
+
+The code uses:
+* Java 8
+* Maven
+* JUnit 4.12 / Hamcrest 2.0.0.0
+
 ## The “Situation”
 
 Code to produce a popular children’s nursery rhyme was produced by a web agency for the customer 
