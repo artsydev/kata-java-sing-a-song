@@ -3,6 +3,7 @@ package com.github.artsydev;
 
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.core.Is.is;
@@ -60,31 +61,6 @@ public class Song_Should {
             "\n" +
             "There was an old lady who swallowed a horse...\n" +
             "...She's dead, of course!";
-    private static final String ALPHABET_ANIMAL_LYRICS =
-            "There was an old lady who swallowed an A.\n"
-            + "A behavior!\n"
-            + "\n"
-            + "There was an old lady who swallowed a B;\n"
-            + "B behavior.\n"
-            + "She swallowed the B to catch the A;\n"
-            + "A behavior!\n"
-            + "\n"
-            + "There was an old lady who swallowed a C;\n"
-            + "C behavior?\n"
-            + "She swallowed the C to catch the B,\n"
-            + "She swallowed the B to catch the A;\n"
-            + "A behavior!\n"
-            + "\n"
-            + "There was an old lady who swallowed a D;\n"
-            + "D behavior!!!\n"
-            + "She swallowed the D to catch the C,\n"
-            + "She swallowed the C to catch the B,\n"
-            + "She swallowed the B to catch the A;\n"
-            + "A behavior!\n"
-            + "\n"
-            + "There was an old lady who swallowed an E...\n"
-            + "E behaving badly.";
-
     private static final Animal FLY = new Animal("fly",
                                                  "I don't know why she swallowed a fly - perhaps she'll die!");
     private static final Animal SPIDER = new Animal("spider",
@@ -140,10 +116,14 @@ public class Song_Should {
     }
 
     @Test public void
-    return_short_verses_for_first_and_last_with_explanatory_verses_for_letter_animals() {
+    use_correct_indefinite_article_before_animal_names() {
         String lyrics = Song.lyricsFor(A, B, C, D, E);
 
-        assertThat(lyrics, is(ALPHABET_ANIMAL_LYRICS));
+        assertThat(lyrics, containsString("swallowed an A"));
+        assertThat(lyrics, containsString("swallowed a B"));
+        assertThat(lyrics, containsString("swallowed a C"));
+        assertThat(lyrics, containsString("swallowed a D"));
+        assertThat(lyrics, containsString("swallowed an E"));
     }
 
 }
